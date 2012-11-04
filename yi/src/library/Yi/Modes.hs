@@ -6,7 +6,7 @@ module Yi.Modes (TokenBasedMode, fundamentalMode,
                  extensionOrContentsMatch, linearSyntaxMode,
                  svnCommitMode, hookModes, applyModeHooks,
                  lookupMode, whitespaceMode, removeAnnots,
-                 gitCommitMode, rubyMode
+                 gitCommitMode, rubyMode, rustMode
                 ) where
 
 import Prelude ()
@@ -37,6 +37,7 @@ import qualified Yi.Lexer.Python     as Python
 import qualified Yi.Lexer.Java       as Java
 import qualified Yi.Lexer.JSON       as JSON
 import qualified Yi.Lexer.Ruby       as Ruby
+import qualified Yi.Lexer.Rust       as Rust
 import qualified Yi.Lexer.Srmc       as Srmc
 import qualified Yi.Lexer.SVNCommit  as SVNCommit
 import qualified Yi.Lexer.GitCommit  as GitCommit
@@ -50,7 +51,7 @@ type StyleBasedMode = TokenBasedMode StyleName
 fundamentalMode :: Mode syntax
 svnCommitMode, cMode, objectiveCMode, cppMode, cabalMode,
   srmcMode, ottMode, gnuMakeMode, perlMode, pythonMode,
-  javaMode, jsonMode, rubyMode :: StyleBasedMode
+  javaMode, jsonMode, rubyMode, rustMode :: StyleBasedMode
 ocamlMode :: TokenBasedMode OCaml.Token
 
 fundamentalMode = emptyMode
@@ -145,6 +146,13 @@ rubyMode = (linearSyntaxMode Ruby.initState Ruby.alexScanToken id)
   {
     modeName = "ruby",
     modeApplies = anyExtension ["rb", "ru"]
+  }
+
+
+rustMode = (linearSyntaxMode Rust.initState Rust.alexScanToken id)
+  {
+    modeName = "rust",
+    modeApplies = anyExtension ["rs", "rc"]
   }
 
 pythonMode = base

@@ -167,6 +167,7 @@ defaultConfig =
                         AnyMode (JS.hooks JS.javaScriptMode),
                         AnyMode pythonMode,
                         AnyMode rubyMode,
+                        AnyMode rustMode,
                         AnyMode javaMode,
                         AnyMode jsonMode,
                         AnyMode ireaderMode,
