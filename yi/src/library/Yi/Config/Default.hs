@@ -166,6 +166,7 @@ defaultConfig =
                         AnyMode perlMode,
                         AnyMode (JS.hooks JS.javaScriptMode),
                         AnyMode pythonMode,
+                        AnyMode racketMode,
                         AnyMode rubyMode,
                         AnyMode rustMode,
                         AnyMode javaMode,

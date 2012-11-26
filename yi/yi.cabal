@@ -151,6 +151,7 @@ library
     Yi.Lexer.Ott
     Yi.Lexer.Perl
     Yi.Lexer.Python
+    Yi.Lexer.Racket
     Yi.Lexer.Ruby
     Yi.Lexer.Rust
     Yi.Lexer.Srmc

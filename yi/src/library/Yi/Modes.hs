@@ -6,7 +6,7 @@ module Yi.Modes (TokenBasedMode, fundamentalMode,
                  extensionOrContentsMatch, linearSyntaxMode,
                  svnCommitMode, hookModes, applyModeHooks,
                  lookupMode, whitespaceMode, removeAnnots,
-                 gitCommitMode, rubyMode, rustMode
+                 gitCommitMode, racketMode, rubyMode, rustMode
                 ) where
 
 import Prelude ()
@@ -36,6 +36,7 @@ import qualified Yi.Lexer.Perl       as Perl
 import qualified Yi.Lexer.Python     as Python
 import qualified Yi.Lexer.Java       as Java
 import qualified Yi.Lexer.JSON       as JSON
+import qualified Yi.Lexer.Racket     as Racket
 import qualified Yi.Lexer.Ruby       as Ruby
 import qualified Yi.Lexer.Rust       as Rust
 import qualified Yi.Lexer.Srmc       as Srmc
@@ -140,6 +141,12 @@ perlMode = (linearSyntaxMode Perl.initState Perl.alexScanToken id)
   {
     modeName = "perl",
     modeApplies = anyExtension ["t", "pl", "pm"]
+  }
+
+racketMode = (linearSyntaxMode Racket.initState Racket.alexScanToken id)
+  {
+    modeName = "racket",
+    modeApplies = anyExtension ["rkt"]
   }
 
 rubyMode = (linearSyntaxMode Ruby.initState Ruby.alexScanToken id)
